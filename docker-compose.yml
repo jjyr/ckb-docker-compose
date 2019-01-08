@@ -1,0 +1,40 @@
+version: '3'
+services:
+  node1:
+    image: nervos/ckb
+    ports:
+      - "8114:8114"
+      - "8115:8115"
+    volumes:
+      - $PWD/nodes:/usr/local/share/ckb/nodes:rw
+    command: ["-c", "/usr/local/share/ckb/nodes/node1/config.json", "run"]
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.5
+  node2:
+    image: nervos/ckb
+    volumes:
+      - $PWD/nodes:/usr/local/share/ckb/nodes:rw
+    command: ["-c", "/usr/local/share/ckb/nodes/node2/config.json", "run"]
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.6
+  node3:
+    image: nervos/ckb
+    volumes:
+      - $PWD/nodes:/usr/local/share/ckb/nodes:rw
+    command: ["-c", "/usr/local/share/ckb/nodes/node3/config.json", "run"]
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.7
+  miner1:
+    image: nervos/ckb
+    volumes:
+      - $PWD/nodes:/usr/local/share/ckb/nodes:rw
+    command: ["-c", "/usr/local/share/ckb/nodes/node1/config.json", "miner"]
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
