@@ -32,6 +32,8 @@ services:
     volumes:
       - $PWD/nodes:/usr/local/share/ckb/nodes:rw
     command: ["-c", "/usr/local/share/ckb/nodes/node1/config.json", "miner"]
+    networks:
+      vpcbr:
 networks:
   vpcbr:
     driver: bridge
