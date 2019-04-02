@@ -12,14 +12,18 @@ filter = "info,chain=debug,network=debug"
 color = true
 
 [network]
+path = "/usr/local/share/ckb/nodes/node2/network"
 listen_addresses = ["/ip4/0.0.0.0/tcp/8115"]
+public_addresses = []
 bootnodes = ["/ip4/10.5.0.5/tcp/8115/p2p/QmWRU2NSro4wKgVbFX6y8SPFkcJ1tE2X5xzk9msMhdRmdS"]
-reserved_nodes = []
-only_reserved_peers = false
-min_peers = 4
-max_peers = 8
-secret_file = "secret"
-nodes_file = "nodes.toml"
+reserved_peers = []
+reserved_only = false
+max_peers = 125
+max_outbound_peers = 30
+ping_interval_secs = 15
+ping_timeout_secs = 20
+connect_outbound_interval_secs = 15
+
 
 [rpc]
 listen_address = "0.0.0.0:8114"

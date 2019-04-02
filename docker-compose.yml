@@ -1,7 +1,7 @@
 version: '3'
 services:
   node1:
-    image: nervos/ckb:v0.7.0-rc
+    image: nervos/ckb:v0.8.0-rc
     ports:
       - "8114:8114"
       - "8115:8115"
@@ -12,7 +12,7 @@ services:
       vpcbr:
         ipv4_address: 10.5.0.5
   node2:
-    image: nervos/ckb:v0.7.0-rc
+    image: nervos/ckb:v0.8.0-rc
     volumes:
       - $PWD/nodes:/usr/local/share/ckb/nodes:rw
     command: ["run", "-c", "/usr/local/share/ckb/nodes/node2/config.toml"]
@@ -20,7 +20,7 @@ services:
       vpcbr:
         ipv4_address: 10.5.0.6
   node3:
-    image: nervos/ckb:v0.7.0-rc
+    image: nervos/ckb:v0.8.0-rc
     volumes:
       - $PWD/nodes:/usr/local/share/ckb/nodes:rw
     command: ["run", "-c", "/usr/local/share/ckb/nodes/node3/config.toml"]
@@ -28,7 +28,7 @@ services:
       vpcbr:
         ipv4_address: 10.5.0.7
   miner1:
-    image: nervos/ckb:v0.7.0-rc
+    image: nervos/ckb:v0.8.0-rc
     volumes:
       - $PWD/nodes:/usr/local/share/ckb/nodes:rw
     command: ["miner", "-c", "/usr/local/share/ckb/nodes/node1/miner.toml"]
