@@ -1,37 +1,37 @@
 version: '3'
 services:
   node1:
-    image: nervos/ckb
+    image: nervos/ckb:v0.8.0-rc
     ports:
       - "8114:8114"
       - "8115:8115"
     volumes:
       - $PWD/nodes:/usr/local/share/ckb/nodes:rw
-    command: ["-c", "/usr/local/share/ckb/nodes/node1/config.json", "run"]
+    command: ["run", "-c", "/usr/local/share/ckb/nodes/node1/config.toml"]
     networks:
       vpcbr:
         ipv4_address: 10.5.0.5
   node2:
-    image: nervos/ckb
+    image: nervos/ckb:v0.8.0-rc
     volumes:
       - $PWD/nodes:/usr/local/share/ckb/nodes:rw
-    command: ["-c", "/usr/local/share/ckb/nodes/node2/config.json", "run"]
+    command: ["run", "-c", "/usr/local/share/ckb/nodes/node2/config.toml"]
     networks:
       vpcbr:
         ipv4_address: 10.5.0.6
   node3:
-    image: nervos/ckb
+    image: nervos/ckb:v0.8.0-rc
     volumes:
       - $PWD/nodes:/usr/local/share/ckb/nodes:rw
-    command: ["-c", "/usr/local/share/ckb/nodes/node3/config.json", "run"]
+    command: ["run", "-c", "/usr/local/share/ckb/nodes/node3/config.toml"]
     networks:
       vpcbr:
         ipv4_address: 10.5.0.7
   miner1:
-    image: nervos/ckb
+    image: nervos/ckb:v0.8.0-rc
     volumes:
       - $PWD/nodes:/usr/local/share/ckb/nodes:rw
-    command: ["-c", "/usr/local/share/ckb/nodes/node1/config.json", "miner"]
+    command: ["miner", "-c", "/usr/local/share/ckb/nodes/node1/miner.toml"]
     networks:
       vpcbr:
 networks:
@@ -39,4 +39,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 10.5.0.0/16
+        - subnet: 10.5.0.1/16
